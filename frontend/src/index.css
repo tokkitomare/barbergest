@@ -1,0 +1,20 @@
+/* ATENÇÃO!!!
+ESSE ARQUIVO É O CSS PADRÃO, OU SEJA, CSS QUE SERÁ PADRÃO PARA O FRONTEND CASO NÃO SEJA ESCOLHIDO UM 
+ESPECÍFICO EM ALGUM LUGAR, PORTANTO NÃO MEXA AQUI, SOMENTE COM AUTORIZAÇÃO DO GRUPO TODO */
+
+@import url('https://fonts.googleapis.com/css2?family=Huninn&family=Open+Sans&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-huninn: "Huninn", "Heveltica", "Arial", "sans-serif";
+  --font-opensans: "Open Sans", "Heveltica", "Arial", "sans-serif";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @apply font-opensans bg-[#444] bg-linear-to-br from-[#444] via-[#222] to-[#111] bg-fixed bg-cover bg-center bg-no-repeat text-[#f0f2f5];
+}
