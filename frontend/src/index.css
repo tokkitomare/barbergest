@@ -16,5 +16,9 @@ ESPECÍFICO EM ALGUM LUGAR, PORTANTO NÃO MEXA AQUI, SOMENTE COM AUTORIZAÇÃO D
 }
 
 body {
-  @apply font-opensans bg-[#444] bg-linear-to-br from-[#444] via-[#222] to-[#111] bg-fixed bg-cover bg-center bg-no-repeat text-[#f0f2f5];
+  @apply font-opensans bg-[#444] bg-linear-to-br from-[#444] via-[#222] to-[#4e1900] bg-fixed bg-cover bg-center bg-no-repeat text-[#f0f2f5];
+}
+
+body.white {
+  @apply bg-[#c0c0c0] bg-linear-to-br from-[#c0c0c0] via-[#7c7c7c] to-[#4e1900] text-[#232424]
 }
