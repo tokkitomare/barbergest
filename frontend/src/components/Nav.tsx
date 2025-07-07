@@ -1,21 +1,55 @@
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
+import BtnsDashboard from "./ButtonsDashboard";
 
 export default function NavBar() {
     const location = useLocation().pathname;
     let content;
 
-    switch (location) {
-        case "/staff":
-            content = 
-            <></>;
-            break;
-        case "/user":
-            content = 
-            <></>;
-            break;
-        default:
-            content = 
+    if (location.startsWith("/barber")) {
+        content = (
+            <>
+                <div className="bg-gray-950/45 bg-linear-to-r from-[#666] via-[#444] to-[#344] p-3 
+                shadow-2xl rounded-2xl">
+                    <div>
+                        <h1 className="text-5xl font-huninn select-none">
+                            BarberGest
+                        </h1>
+                    </div>
+                    <nav className="flex justify-around bg-black/35 bg-linear-to-r from-[#111] to-[#333]  rounded-full font-huninn">
+                        <BtnsDashboard texts={[
+                            "Dashboard", "Clientes",
+                            "Funcionários", "Serviços",
+                            "Agendamentos", "Pagamentos",
+                            "Produtos", "Caixa / Relatórios"
+                            ]} 
+                        />
+                    </nav>
+                </div>
+            </>
+        );
+    } else if (location.startsWith("/client")) {
+        content = (
+            <>
+                <div className="bg-gray-950/45 bg-linear-to-r from-[#666] via-[#444] to-[#344] p-3 
+                shadow-2xl rounded-2xl">
+                    <div>
+                        <h1 className="text-5xl font-huninn select-none">
+                            BarberGest
+                        </h1>
+                    </div>
+                    <nav className="flex justify-center gap-5 bg-black/35 bg-linear-to-r from-[#111] to-[#333]  rounded-full font-huninn">
+                        <BtnsDashboard texts={[
+                            "Dashboard", "Calendário",
+                            "Histórico de pagamentos"
+                            ]} 
+                        />
+                    </nav>
+                </div>
+            </>
+        );
+    } else {
+        content = (
             <>
                 <Link to="/" className="
                     absolute m-6 font-huninn text-5xl
@@ -44,12 +78,12 @@ export default function NavBar() {
                             </div>
 
                             <div className="flex space-x-1">
-                                <Link to="#" className="px-4 py-1 rounded-full border border-white/30 
+                                <Link to="/login" className="px-4 py-1 rounded-full border border-white/30 
                                 bg-white/30 hover:bg-white/40 transition backdrop-blur-md 
                                 shadow-[0px_0px_25px_rgba(255,235,255,0.3)]">
                                     Entre
                                 </Link>
-                                <Link to="#" className="px-4 py-1 rounded-full bg-orange-600 
+                                <Link to="/register" className="px-4 py-1 rounded-full bg-orange-600 
                                 hover:bg-orange-700 transition 
                                 shadow-[0px_0px_25px_rgba(255,235,255,0.3)]">
                                     Cadastre-se
@@ -59,8 +93,9 @@ export default function NavBar() {
                     </div>
                 </div>
             </>
-            ;
+            );
     }
+
 
     return (
         <>

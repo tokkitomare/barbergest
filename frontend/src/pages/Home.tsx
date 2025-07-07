@@ -49,11 +49,11 @@ export default function Home() {
                         </>
                     )}
                     
-                    <img className="h-50 w-full rounded-2xl shadow-[0px_0px_25px_rgba(255,235,255,0.3)] hover:scale-101
+                    <img className="w-full rounded-2xl shadow-[0px_0px_25px_rgba(255,235,255,0.3)] hover:scale-101
                     transform transition-all duration-300 ease-in-out" id="example-img" 
                     src={ isStaff ? 
-                        "../images/imagemteste.png" : 
-                        "https://img.freepik.com/fotos-gratis/resumo-luxo-macio-fundo-vermelho-projeto-de-layout-dos-namorados-de-natal-estudio-sala-modelo-da-web-relatorio-de-negocios-com-cor-gradiente-de-circulo-suave_1258-54521.jpg" 
+                        "../images/barber-board.png" : 
+                        "../images/client-board.png" 
                     }
                     alt="barbergest-funcionamento-exemplo" />
                 </section>
@@ -109,8 +109,8 @@ export default function Home() {
                         <a 
                         className="font-huninn text-orange-300 font-extrabold 
                         text-shadow-[0px_0px_25px_rgba(255,178,0,0.8)] hover:underline" 
-                        href="https://wa.me/5581999999999?text=Olá,%20quero%20solicitar%20suporte" target="_blank">
-                            +55 (81) 9 9999-9999
+                        href="https://wa.me/55819xxxxxxxx?text=Olá,%20quero%20solicitar%20suporte" target="_blank">
+                            +55 (81) 9 xxxx-xxxx
                         </a>
                     </p>
                     <p>Nosso email: {""}
