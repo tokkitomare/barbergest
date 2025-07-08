@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Home() {
-    const [isStaff, setIsStaff] = useState(true);
+    const [isStaff, setIsStaff] = useState(false);
 
     return (
         <>

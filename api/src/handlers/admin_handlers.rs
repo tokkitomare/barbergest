@@ -1,6 +1,7 @@
 use axum::extract::Path;
 use axum::{Extension, Json};
 use axum::http::StatusCode;
+use futures::future::join_all;
 use migration::Expr;
 use sea_orm::{EntityTrait, QueryFilter};
 use sea_orm::{ActiveValue::Set, DatabaseConnection, ActiveModelTrait};
@@ -79,6 +80,32 @@ pub async fn delete_user(
         })?;
 
     Ok(Json(DeleteUserModel { message: "Deleted!".to_owned() }))
+}
+
+pub async fn delete_all_users(
+    Extension(db): Extension<DatabaseConnection>,
+) -> Result<Json<DeleteUserModel>, APIErr> {
+    let users = user::Entity::find()
+        .all(&db)
+        .await
+        .map_err(|e| APIErr {
+            message: e.to_string(),
+            status_code: StatusCode::INTERNAL_SERVER_ERROR,
+            error_code: Some(50),
+        })
+        .map_err(|_| APIErr {
+            message: "No users in DB.".to_owned(),
+            status_code: StatusCode::NOT_FOUND,
+            error_code: Some(44),
+        })?;
+
+    let deleted = users.into_iter().map(|u| {
+        user::Entity::delete_by_id(u.id).exec(&db)
+    });
+
+    join_all(deleted).await;
+
+    Ok(Json(DeleteUserModel { message: "All users got deleted!".to_owned() }))
 }
 
 pub async fn fetch_all_users(

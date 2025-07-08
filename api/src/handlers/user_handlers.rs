@@ -36,6 +36,8 @@ pub async fn create_user(
         });
     }
 
+    println!("n: {} e: {} s: {}, c: {}", payload.name, payload.email, payload.password, payload.is_client);
+
     let user_model = user::ActiveModel {
         name: Set(payload.name.to_owned()),
         email: Set(payload.email.to_owned()),
@@ -99,7 +101,7 @@ pub async fn login_user(
             });
         }
 
-    let token = encode_jwt(user.email, user.is_active)
+    let token = encode_jwt(user.email, user.is_client)
         .map_err(|_| APIErr {
             message: "Failed to login".to_owned(),
             status_code: StatusCode::UNAUTHORIZED,

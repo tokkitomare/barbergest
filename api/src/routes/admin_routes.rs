@@ -9,6 +9,7 @@ pub fn admin_routes() -> Router {
 
     Router::new()
         .route("/user/{uuid}/update", put(update_user))
+        .route("/user/all/delete", delete(delete_all_users))
         .route("/user/{uuid}/delete", delete(delete_user))
         .route("/user/all", get(fetch_all_users))
         .layer(cors)
