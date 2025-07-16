@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Home() {
-    const [isStaff, setIsStaff] = useState(false);
+    const [isStaff, setIsStaff] = useState(true);
 
     return (
         <>
@@ -74,20 +74,7 @@ export default function Home() {
                         <li>Ter cartão de débito ou crédito</li>
                     </ul>
                     <p>
-                        Isso mesmo, é realmente muito simples. Mas como você vai saber se o serviço é bom mesmo?
-                        Experimente nossos 7 dias <span className="text-orange-300 font-extrabold">totalmente GRÁTIS. <br /></span>
-                        Sem nem precisar de um cartão de crédito/débito! Somente com seu número de telefone ou CPF você pode
-                        desfrutar do <span className="text-orange-300 font-extrabold">GestBarber</span> por 7 dias. <br />
-                        Para isso: {""}
-                        <a 
-                        className="hover:underline font-huninn text-3xl text-orange-300 font-extrabold text-shadow-[0px_0px_25px_rgba(255,178,0,0.5)]" 
-                        href="#">
-                            clique aqui
-                        </a>
-                    </p>
-                    <br />
-                    <p>
-                        Caso você já conheça o serviço, você pode {""}
+                        Isso mesmo, é realmente muito simples. Você pode {""}
                         <a 
                         className="font-huninn text-orange-300 font-extrabold 
                         text-shadow-[0px_0px_25px_rgba(255,178,0,0.8)] hover:underline" href="#">CLICAR AQUI</a> e 

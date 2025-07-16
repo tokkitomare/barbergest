@@ -50,3 +50,7 @@ pub async fn guard(mut req: Request, next: Next) -> Result<Response, APIErr> {
 
     Ok(next.run(req).await)
 }
+
+pub async fn verify_auth(mut req: Request, next: Next) -> Result<Response, APIErr> {
+    Ok(next.run(req).await)
+}

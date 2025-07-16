@@ -155,8 +155,8 @@ return (
                     <span className="text-red-500 text-sm">Senhas não coindidem</span>
                 }
 
-                <div className="flex items-center space-x-2 mt-4 select-none">
-                    <label htmlFor="verify">
+                <div className="flex items-center space-x-2 mt-4">
+                    {/* <label htmlFor="verify">
                         Você está se cadastrando como empresa?
                     </label>
 
@@ -172,7 +172,10 @@ return (
 
                     <label>
                         (caso você seja um cliente, não marque)
-                    </label>
+                    </label> */}
+
+                    <Link to={"/payment"} className="text-yellow-300">Esta área de criação de contas é apenas para clientes! Se você é a barbearia, clique aqui.</Link>
+
                 </div>
 
                 <button
