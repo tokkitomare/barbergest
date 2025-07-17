@@ -18,3 +18,13 @@ impl IntoResponse for APIErr {
         }))).into_response()
     }
 }
+
+impl APIErr {
+    pub fn err(message: &str, status_code: StatusCode, err_code: i8) -> Self {
+        Self {
+            message: message.to_owned(),
+            status_code,
+            error_code: Some(err_code)
+        }
+    }
+}

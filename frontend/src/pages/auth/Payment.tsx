@@ -83,9 +83,10 @@ export default function Payment() {
                         <p>
                             Clique no botão abaixo e siga as etapas.
                             Com o pagamento efetuado, você ganhará uma conta com o email que você
-                            botou e com a senha de sua escolha para sempre.
+                            botou e com a senha de sua escolha para sempre. <br /><br />
+                            <span className="text-2xl text-shadow-[0px_0px_25px_rgba(255,235,255,0.9)]">Preço atual: R$15,00</span>
                         </p>
-                        <p className="text-orange-400 font-huninn">• Formas de pagamento:</p>
+                        <p className="text-orange-400 font-huninn selection:bg-green-400!">• Formas de pagamento:</p>
                         <ul className="list-none list-inside m-0 p-0">
                             <li className="before:content-['↪'] before:mr-2">Pix</li>
                         </ul>

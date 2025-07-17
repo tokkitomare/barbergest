@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const [isStaff, setIsStaff] = useState(true);
@@ -75,9 +76,10 @@ export default function Home() {
                     </ul>
                     <p>
                         Isso mesmo, é realmente muito simples. Você pode {""}
-                        <a 
+                        <Link 
                         className="font-huninn text-orange-300 font-extrabold 
-                        text-shadow-[0px_0px_25px_rgba(255,178,0,0.8)] hover:underline" href="#">CLICAR AQUI</a> e 
+                        text-shadow-[0px_0px_25px_rgba(255,178,0,0.8)] hover:underline" to="/payment">CLICAR AQUI
+                        </Link> e 
                         ver a tabela de preços e métodos de pagamento.
                     </p>
                 </section>
