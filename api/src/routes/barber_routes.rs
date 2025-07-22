@@ -1,10 +1,10 @@
-use axum::{http::{Method, StatusCode}, middleware, routing::get, Router};
+use axum::{http::{Method, StatusCode}, middleware, routing::{get, post}, Router};
 use tower_http::cors::{Any, CorsLayer};
-use crate::utils::guards::verify_auth;
+use crate::{handlers::barber_handlers::{add_event, view_events}, utils::guards::verify_auth};
 
 pub fn barber_routes() -> Router {
     let cors = CorsLayer::new()
-        .allow_methods([Method::GET, Method::DELETE, Method::PUT])
+        .allow_methods([Method::GET, Method::DELETE, Method::PUT, Method::POST])
         .allow_origin(Any);
 
     Router::new()
@@ -17,5 +17,7 @@ pub fn barber_routes() -> Router {
                 .route("/dashboard", get(async || StatusCode::OK))
         )
         .route_layer(middleware::from_fn(verify_auth))
+        .route("/event/{event}", post(add_event))
+        .route("/view/event/{event}", get(view_events))
         .layer(cors)
 }

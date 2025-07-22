@@ -1,20 +1,20 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function Payment() {
     const [showModal, setShowModal] = useState(false);
 
-        const [formData, setFormData] = useState({
+    const handleButtonModalRedirection = () => {
+        setShowModal(true);
+        window.open("https://mpago.la/16kUino", "_blank");
+    }
+
+    const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
-        confirmPassword: "",
-        isClient: true,
+        isClient: false,
     });
-
-    const [pwErr, setPwErr] = useState(false);
-
-    const [showPw, setShowPw] = useState(false);
-    const [showConfirmPw, setShowConfirmPw] = useState(false);
 
     const [status, SetStatus] = useState<[string, boolean]>(["", false]);
 
@@ -24,13 +24,6 @@ export default function Payment() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (formData.password != formData.confirmPassword) {
-            setPwErr(true);
-            return;
-        } else {
-            setPwErr(false);
-        }
 
         const userData = {
             name: formData.name,
@@ -84,12 +77,8 @@ export default function Payment() {
                             Clique no botão abaixo e siga as etapas.
                             Com o pagamento efetuado, você ganhará uma conta com o email que você
                             botou e com a senha de sua escolha para sempre. <br /><br />
-                            <span className="text-2xl text-shadow-[0px_0px_25px_rgba(255,235,255,0.9)]">Preço atual: R$15,00</span>
+                            <span className="text-2xl text-shadow-[0px_0px_25px_rgba(255,235,255,0.9)]">Preço atual: R$10,00</span>
                         </p>
-                        <p className="text-orange-400 font-huninn selection:bg-green-400!">• Formas de pagamento:</p>
-                        <ul className="list-none list-inside m-0 p-0">
-                            <li className="before:content-['↪'] before:mr-2">Pix</li>
-                        </ul>
                     </section>
 
                     <div className="flex justify-center mb-6">
@@ -98,7 +87,7 @@ export default function Payment() {
                                     font-bold hover:scale-102 duration-500 cursor-pointer 
                                     transition backdrop-blur-md"
 
-                            onClick={() => setShowModal(true)}
+                            onClick={handleButtonModalRedirection}
                         >
                             Registre-se agora mesmo!
                         </button>
@@ -116,8 +105,8 @@ export default function Payment() {
                                     ×
                                 </button>
 
-                                <h2 className="text-2xl font-bold text-center mb-4 text-black">Informações de Pagamento</h2>
-                                <form className="space-y-4 text-black">
+                                <h2 className="text-2xl font-bold text-center mb-4 text-black">Com o pagamento efetuado:</h2>
+                                <form onSubmit={handleSubmit} className="space-y-4 text-black">
                                     <input
                                         type="text"
                                         placeholder="Nome da barbearia"
@@ -133,24 +122,17 @@ export default function Payment() {
                                         placeholder="Senha"
                                         className="w-full px-4 py-2 border rounded-md"
                                     />
-                                    <input
-                                        type="password"
-                                        placeholder="Confirmar senha"
-                                        className="w-full px-4 py-2 border rounded-md"
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="CPF"
-                                        className="w-full px-4 py-2 border rounded-md"
-                                    />
 
                                     <button
                                         type="submit"
                                         className="cursor-pointer w-full bg-orange-600 text-white font-bold py-2 rounded-full hover:bg-orange-700 transition"
                                     >
-                                        Enviar pagamento
+                                        Registrar
                                     </button>
                                 </form>
+                                <p className="text-black">
+                                    {status[0]}
+                                </p>
                             </div>
                         </div>
                     )}

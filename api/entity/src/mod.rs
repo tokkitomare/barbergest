@@ -2,4 +2,13 @@
 
 pub mod prelude;
 
+pub mod appointments;
+pub mod cash_register;
+pub mod client_appointments;
+pub mod clients;
+pub mod payments;
+pub mod products;
+pub mod reports;
+pub mod services;
+pub mod staff;
 pub mod user;

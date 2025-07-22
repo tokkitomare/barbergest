@@ -72,7 +72,7 @@ export default function Home() {
                         Para registrar seu negócio é necessário:
                     </p>
                     <ul className="list-disc px-5 py-1 text-orange-300 font-bold">
-                        <li>Ter cartão de débito ou crédito</li>
+                        <li>Ter conta no MercadoPago</li>
                     </ul>
                     <p>
                         Isso mesmo, é realmente muito simples. Você pode {""}
