@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  isClient  Boolean
+  isActive  Boolean
+  uuid      String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Clients {
+  id    Int    @id @default(autoincrement())
+  name  String
+  phone String
+}
+
+model Staff {
+  id    Int    @id @default(autoincrement())
+  name  String
+  uuid  String @unique
+  role  String
+  phone String
+}
+
+model Services {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+}
+
+model Appointments {
+  id        Int      @id @default(autoincrement())
+  clientId  Int
+  staffId   Int
+  serviceId Int
+  dateTime  DateTime
+  status    String
+}
+
+model Payments {
+  id            Int    @id @default(autoincrement())
+  appointmentId Int
+  amount        Float
+  paymentMethod String
+}
+
+model Products {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+}
+
+model CashRegister {
+  id             Int      @id @default(autoincrement())
+  openedAt       DateTime
+  closedAt       DateTime?
+  initialBalance Float
+  finalBalance   Float?
+}
+
+model Reports {
+  id         Int      @id @default(autoincrement())
+  startDate  DateTime
+  endDate    DateTime
+  reportType String
+  filePath   String
+}
+
+model ClientAppointments {
+  id             Int    @id @default(autoincrement())
+  clientId       Int
+  availableDays  String
+  preferredHours String
+}
