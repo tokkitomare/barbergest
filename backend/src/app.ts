@@ -16,9 +16,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use(admRouter);
-app.use(barbRouter);
-app.use(userRouter);
+app.use('/admin', admRouter);
+app.use('/barber', barbRouter);
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
     res.send('Backend rodando com sucesso.');
